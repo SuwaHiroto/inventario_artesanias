@@ -1,0 +1,278 @@
+.contenedor {
+    margin-left: 190px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 190px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    background: linear-gradient(135deg, #c93c3c, #e67e22);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+
+/* Controles */
+.controles {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.busqueda {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.busqueda input {
+    width: 95%;
+    padding: 10px 15px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.busqueda i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background-color: #c93c3c !important;
+    color: white;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    color: #c93c3c !important;
+    background-color: #ffff !important;
+    border: 1px solid #c93c3c   !important;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Tabla */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 25px;
+}
+
+.table thead th,
+.tabla-venta thead th,
+.tabla-ventas thead th,
+.tabla-datos thead th {
+    background-color: #c93c3c !important;
+    color: #fff !important;
+}
+
+
+.acciones-header {
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Acciones */
+.acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-editar,
+.btn-eliminar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.btn-editar {
+    color: #3a7bd5;
+}
+
+.btn-editar:hover {
+    color: #2c5fb3;
+}
+
+.btn-eliminar {
+    color: #dc3545;
+}
+
+.btn-eliminar:hover {
+    color: #c82333;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-contenido {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cerrar {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.cerrar:hover {
+    color: #333;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Mensajes */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.notificacion-exito {
+    background-color: #28a745;
+}
+
+.notificacion-error {
+    background-color: #dc3545;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .controles {
+        flex-direction: column;
+    }
+
+    .busqueda {
+        width: 100%;
+    }
+
+    .modal-contenido {
+        margin: 10% auto;
+        width: 95%;
+    }
+}

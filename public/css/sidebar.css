@@ -1,0 +1,214 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+/* Estilos para la barra lateral (Escritorio) */
+.barra-lateral {
+    width: 190px;
+    height: 100vh;
+    background-color: #c93c3c;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.barra-lateral.contraido {
+    width: 60px;
+}
+
+.contenedor-logo {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contenedor-logo h2 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.boton-menu {
+    display: none;
+    /* Oculto por defecto en escritorio */
+}
+
+.menu-lateral {
+    padding: 1rem 0;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* SOLUCIÓN 1: Eliminamos el margen inferior que causa los espacios rojos */
+.menu-lateral li {
+    margin: 0;
+}
+
+.elemento-menu {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    /* MEJORA: Añadimos una línea divisoria sutil para reemplazar el espacio */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* MEJORA: Quitamos la línea del último elemento para un acabado limpio */
+.menu-lateral>ul>li:last-child>.elemento-menu {
+    border-bottom: none;
+}
+
+
+.elemento-menu:hover {
+    background-color: #ffffff;
+    color: #2c2a2a;
+}
+
+.tiene-submenu>.elemento-menu .flecha {
+    margin-left: auto;
+    /* Empuja la flecha al final */
+    transition: transform 0.3s ease;
+}
+
+.tiene-submenu.activo>.elemento-menu .flecha {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #b33636;
+}
+
+.tiene-submenu.activo>.submenu {
+    max-height: 500px;
+}
+
+.elemento-submenu {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.elemento-submenu:hover {
+    background-color: #ffffff;
+    color: #c93c3c;
+}
+
+.elemento-menu i,
+.elemento-submenu i {
+    width: 20px;
+    margin-right: 1rem;
+}
+
+.texto-menu {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.barra-lateral.contraido .texto-menu,
+.barra-lateral.contraido .flecha {
+    display: none;
+}
+
+/* Estilos para el contenido principal (Escritorio) */
+main {
+    margin-left: 190px;
+    padding: 15px;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 190px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.barra-lateral.contraido~main {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+}
+
+/* ======================================================= */
+/* ESTILOS PARA TABLETS Y MÓVILES                          */
+/* ======================================================= */
+
+@media screen and (max-width: 901px) {
+
+    .boton-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        width: 45px;
+        height: 45px;
+        background-color: #c93c3c;
+        color: white;
+        border: none;
+        border-radius: 30%;
+        /* Cambiado a 50% para un círculo perfecto */
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .barra-lateral {
+        position: fixed;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        /* SOLUCIÓN 2: Añadimos un padding superior para empujar el menú hacia abajo */
+        padding-top: 75px;
+    }
+
+    .barra-lateral.menu-activo {
+        transform: translateX(0);
+    }
+
+    main {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding-top: 75px;
+    }
+
+    .contenedor-logo h2 {
+        display: block;
+    }
+
+    .texto-menu {
+        display: block !important;
+    }
+
+    .tiene-submenu>.elemento-menu .flecha {
+        display: block;
+    }
+
+    body.menu-abierto::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1049;
+    }
+}

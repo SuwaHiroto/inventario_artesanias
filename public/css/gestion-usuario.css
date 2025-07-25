@@ -1,0 +1,301 @@
+.contenedor {
+    margin-left: 190px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 190px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+header.header {
+    background: linear-gradient(135deg, #c93c3c, #e67e22);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+header.header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.card-gestion {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* --- TÍTULOS Y CABECERAS --- */
+.titulo-gestion {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #343a40;
+    font-weight: 600;
+    font-size: 1.7em;
+}
+
+.titulo-lista {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    color: #343a40;
+    font-weight: 500;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* --- FORMULARIO DE CREACIÓN/EDICIÓN --- */
+.formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fila-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.grupo-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-form label {
+    margin-bottom: 8px;
+    font-size: 0.85em;
+    color: #495057;
+    font-weight: 500;
+}
+
+.grupo-form input,
+.grupo-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.grupo-form input:focus,
+.grupo-form select:focus {
+    border-color: #c93c3c;
+    /* Foco con el color del tema */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(201, 60, 60, 0.2);
+}
+
+.permisos-info {
+    font-size: 0.85em;
+    color: #495057;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+}
+
+.permisos-info ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.permisos-info ul li {
+    margin-bottom: 5px;
+}
+
+.btn-crear {
+    background-color: #c93c3c;
+    /* Color del tema */
+    color: white;
+    border: 1px solid #c93c3c;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-crear:hover {
+    background-color: #ffffff;
+    color: #c93c3c;
+}
+
+/* --- LISTA DE USUARIOS Y TABLA --- */
+.lista-usuarios {
+    margin-top: 50px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 30px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    background-color: #c93c3c !important;
+    /* Color del tema */
+    color: #fff !important;
+    font-weight: 500;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 0;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Badges de Estado */
+.badge-estado {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-activo {
+    background-color: rgba(40, 167, 69, 0.15);
+    /* Verde con opacidad */
+    color: #1a7431;
+}
+
+.badge-inactivo {
+    background-color: rgba(220, 53, 69, 0.15);
+    /* Rojo con opacidad */
+    color: #a51c30;
+}
+
+/* Botones de Acciones en la tabla */
+.acciones-tabla .btn {
+    padding: 5px 8px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.acciones-tabla .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.acciones-tabla .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+
+/* --- DISEÑO RESPONSIVO --- */
+
+/* Tablets y pantallas pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+    .contenedor {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .card-gestion {
+        padding: 20px;
+    }
+
+    .fila-form {
+        grid-template-columns: 1fr;
+        /* Apila los campos del formulario */
+        gap: 18px;
+    }
+}
+
+/* Teléfonos móviles (hasta 576px) */
+@media (max-width: 576px) {
+    .card-gestion {
+        padding: 15px;
+        box-shadow: none;
+        border: 1px solid #e9ecef;
+    }
+
+    .titulo-gestion {
+        font-size: 1.5em;
+    }
+
+    .btn-crear {
+        padding: 14px;
+    }
+
+    /* Transformación de la tabla a formato de "tarjetas" */
+    .table thead {
+        display: none;
+        /* Ocultamos la cabecera tradicional */
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table td {
+        text-align: right;
+        /* Alineamos el contenido a la derecha */
+        padding-left: 50%;
+        /* Creamos espacio para la etiqueta */
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .table td:last-child {
+        border-bottom: none;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        /* Usamos el atributo data-label como etiqueta */
+        position: absolute;
+        left: 15px;
+        width: calc(50% - 30px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 500;
+        color: #343a40;
+    }
+}
