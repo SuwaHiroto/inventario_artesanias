@@ -1,10 +1,10 @@
 <?php
 class Conexion
 {
-    private $host = "localhost:3307"; // Cambia el puerto si es necesario
-    private $username = "root";
-    private $password = "72830723";
-    private $dbname = "inventario";
+    private $host = "if0_39558707_inventario_artesanias"; // Cambia el puerto si es necesario
+    private $username = "if0_39558707_inventario_artesanias";
+    private $password = "lc1VsiUnM0b8yU";
+    private $dbname = "if0_39558707_inventario_artesanias";
     private $conn;
 
     public function __construct()
