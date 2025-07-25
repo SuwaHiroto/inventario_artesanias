@@ -1,13 +1,21 @@
 # Usa una imagen base oficial de PHP con Apache (versión 8.2 es un buen punto de partida)
 FROM php:8.2-apache
 
-# Instala extensiones de PHP necesarias
-# 'pdo_pgsql' y 'pgsql' son cruciales para conectar PHP con PostgreSQL.
-# 'gd' es común para manipulación de imágenes. Puedes añadir otras si las necesitas.
-# 'libpq-dev' es necesario para compilar las extensiones de PostgreSQL.
+# Instala las dependencias del sistema necesarias y luego las extensiones de PHP.
+# 'zip' y 'unzip' son utilidades comunes.
+# 'libpng-dev', 'libjpeg-dev', 'libfreetype-dev' son dependencias para la extensión 'gd'.
+# 'libmysqlclient-dev' es la dependencia para la extensión de MySQL.
 RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/* \
+    zip \
+    unzip \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype-dev \
+    libmysqlclient-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install pdo_mysql \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copia todos los archivos de tu aplicación al directorio raíz del servidor web de Apache.
 # '/var/www/html/' es el directorio por defecto donde Apache sirve los archivos.
@@ -23,8 +31,7 @@ RUN chown -R www-data:www-data /var/www/html/ \
 # Por ejemplo, si tu index.php no está en la raíz, o si necesitas reglas de reescritura.
 # Primero, asegúrate de tener un archivo '000-default.conf' en la raíz de tu proyecto.
 # COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-# RUN a2ensite 000-default.conf && a2dissite 000-default.conf # Deshabilita el default y habilita el tuyo
-# RUN service apache2 reload # Recarga Apache para aplicar los cambios
+# RUN a2enmod rewrite && a2ensite 000-default.conf && service apache2 reload
 
 # Expone el puerto 80, que es el puerto HTTP estándar y el que Apache escucha por defecto.
 EXPOSE 80
